@@ -2,21 +2,15 @@ package bees.elite.ir.offnet.activities;;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -125,11 +119,12 @@ public class AuthenticateUserActivity extends AppCompatActivity {
                                     //check beshe ke user pass doroste
                                     if (res!=null) {
                                         if (!res.equals("")) {
-                                            pref.setRMAuthenticateToken(res);
+                                            pref.setUserAuthenticateToken(res);
                                             //Intent intent = new Intent(getApplicationContext(), ShowMessagesActivity.class);
                                             pref.setUserVOList("");
                                            // startActivity(intent);
                                             //Pbar.setVisibility(View.GONE);
+                                            Toast.makeText(AuthenticateUserActivity.this, "شما با موفقیت وارد برنامه شدید", Toast.LENGTH_LONG).show();
                                         }
                                     }
                                     else{

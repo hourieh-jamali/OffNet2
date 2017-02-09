@@ -12,18 +12,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Type;
-import java.util.Collections;
-import java.util.List;
-
 import bees.elite.ir.offnet.R;
 import bees.elite.ir.offnet.config.PrefManager;
 import bees.elite.ir.offnet.config.RestClient;
@@ -48,7 +36,7 @@ public class StartAppActivity extends AppCompatActivity {
         // setContentView(R.layout.content_main);
         pref = new PrefManager(this);
 
-        if(pref.getRMAuthenticateToken()==null || pref.getRMAuthenticateToken().equals("")) {
+        if(pref.getUserAuthenticateToken()==null || pref.getUserAuthenticateToken().equals("")) {
             Intent i = new Intent(getApplicationContext(), AuthenticateUserActivity.class);
             startActivity(i);
         }

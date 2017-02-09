@@ -33,7 +33,7 @@ public class PrefManager {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_MOBILE = "mobile";
     private static final String KEY_WIZARD_RESULT_TEMP = "jSON";
-    private static final String KEY_REPAIRMAN_AUTHENTICATE_TOKEN = "rm_authenticate_token";
+    private static final String KEY_USER_AUTHENTICATE_TOKEN = "rm_authenticate_token";
     private static final String KEY_REPAIRMAN_STATE = "rm_state";
     private static final String KEY_REPAIRMAN_TRADE_UNIT = "";
     private static final String KEY_last_serach = "last_search";
@@ -61,12 +61,12 @@ public class PrefManager {
         editor.commit();
     }
 
-    public void setRMAuthenticateToken(String token) {
-        editor.putString(KEY_REPAIRMAN_AUTHENTICATE_TOKEN, token);
+    public void setUserAuthenticateToken(String token) {
+        editor.putString(KEY_USER_AUTHENTICATE_TOKEN, token);
         editor.commit();
     }
-    public String getRMAuthenticateToken() {
-        return pref.getString(KEY_REPAIRMAN_AUTHENTICATE_TOKEN, null);
+    public String getUserAuthenticateToken() {
+        return pref.getString(KEY_USER_AUTHENTICATE_TOKEN, null);
     }
     public void setAppRegId(String token) {
         editor.putString("regId", token);
