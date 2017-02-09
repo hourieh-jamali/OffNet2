@@ -53,4 +53,6 @@
 
     <string name="No_network_connection">No network connection</string>
     <string name="back">بازگشت</string>
+    <string name="title_user_authenticate">ورود کاربر</string>
+
 </resources>

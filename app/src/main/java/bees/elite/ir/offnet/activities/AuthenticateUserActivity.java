@@ -108,14 +108,14 @@ public class AuthenticateUserActivity extends AppCompatActivity {
                     }, 600);
                     //Pbar.setVisibility(View.VISIBLE);
 
-                    if (!pref.getAppRegId().equals("")) {
-                        Call<UserAuthTokenModel> call = rc.getApi().authenticateUser(username.getText().toString().trim(), password.getText().toString().trim(), pref.getAppRegId());
+                    if (pref.getAppRegId()!=null && !pref.getAppRegId().equals("")) {
+                        Call<String> call = rc.getApi().authenticateUser(username.getText().toString().trim(), password.getText().toString().trim(), pref.getAppRegId());
 
-                        call.enqueue(new Callback<UserAuthTokenModel>() {
+                        call.enqueue(new Callback<String>() {
                             @Override
-                            public void onResponse(Call<UserAuthTokenModel> call, Response<UserAuthTokenModel> response) {
+                            public void onResponse(Call<String> call, Response<String> response) {
                                 if (response.isSuccessful()) {
-                                    String res = response.body().getToken();
+                                    String res = response.body();
                                     //check beshe ke user pass doroste
                                     if (res!=null) {
                                         if (!res.equals("")) {
@@ -139,7 +139,7 @@ public class AuthenticateUserActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure(Call<UserAuthTokenModel> call, Throwable t) {
+                            public void onFailure(Call<String> call, Throwable t) {
                                 Toast.makeText(AuthenticateUserActivity.this, "failed", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -162,7 +162,7 @@ public class AuthenticateUserActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-       // getMenuInflater().inflate(R.menu.menu_authenticate_user, menu);
+      getMenuInflater().inflate(R.menu.menu_authenticate_user, menu);
         return true;
     }
 

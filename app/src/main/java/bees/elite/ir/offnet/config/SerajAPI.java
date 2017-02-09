@@ -13,8 +13,8 @@ import retrofit2.http.Query;
  */
 public interface SerajAPI {
     //@GET("/erp/jersey/mobileRestFace/authenticate")
-    @GET("/jersey/mobileRestFace/authenticate")
-    Call<UserAuthTokenModel> authenticateUser(@Query("username") String username, @Query("password") String password, @Query("deviceId") String deviceId);
+    @GET("/api/authenticate")
+    Call<String> authenticateUser(@Query("username") String username, @Query("password") String password, @Query("deviceId") String deviceId);
 /*
     @GET("/jersey/mobileRestFace/getNewUserNotesByToken")
     Call<UserNoteModel> getNewUserNotesByToken(@Query("token") String token);
