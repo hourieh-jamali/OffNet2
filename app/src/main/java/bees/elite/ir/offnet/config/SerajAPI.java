@@ -3,6 +3,7 @@ package bees.elite.ir.offnet.config;
 
 /*import ir.seraj.generalnotification.user.UserAuthTokenModel;
 import ir.seraj.generalnotification.user.UserNoteModel;*/
+import bees.elite.ir.offnet.user.UserAuthTokenModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -12,9 +13,9 @@ import retrofit2.http.Query;
  */
 public interface SerajAPI {
     //@GET("/erp/jersey/mobileRestFace/authenticate")
-   /* @GET("/jersey/mobileRestFace/authenticate")
+    @GET("/jersey/mobileRestFace/authenticate")
     Call<UserAuthTokenModel> authenticateUser(@Query("username") String username, @Query("password") String password, @Query("deviceId") String deviceId);
-
+/*
     @GET("/jersey/mobileRestFace/getNewUserNotesByToken")
     Call<UserNoteModel> getNewUserNotesByToken(@Query("token") String token);
 

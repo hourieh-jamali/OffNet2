@@ -1,25 +1,30 @@
-package bees.elite.ir.offnet.activities;
+package bees.elite.ir.offnet.activities;;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.preference.PreferenceManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import ir.seraj.generalnotification.R;
-import ir.seraj.generalnotification.config.PrefManager;
-import ir.seraj.generalnotification.config.RestClient;
-import ir.seraj.generalnotification.user.UserAuthTokenModel;
-import ir.seraj.generalnotification.utils.Utils;
+
+import bees.elite.ir.offnet.R;
+import bees.elite.ir.offnet.config.PrefManager;
+import bees.elite.ir.offnet.config.RestClient;
+import bees.elite.ir.offnet.user.UserAuthTokenModel;
+import bees.elite.ir.offnet.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,8 +38,8 @@ public class AuthenticateUserActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     Button login;
-   // ProgressBar Pbar;
-    private PreferenceManager pref;
+    // ProgressBar Pbar;
+    private PrefManager pref;
     final RestClient rc = RestClient.getInstance();
     private View layoutIntroScreen;
     private View layoutContent;
@@ -53,24 +58,24 @@ public class AuthenticateUserActivity extends AppCompatActivity {
 
 
     }
-private void init(){
-    //if (!OffnetApp.getInstance().isDataConnected()) {
+    private void init(){
+        //if (!GeneralNotificationApp.getInstance().isDataConnected()) {
         progressDialog.hide();
         Timber.d("No network connection.");
 
         initSplashLayout();
 
         // Skip intro screen.
-    new CountDownTimer(3000, 1000) { // 5000 = 5 sec
+        new CountDownTimer(3000, 1000) { // 5000 = 5 sec
 
-        public void onTick(long millisUntilFinished) {
-        }
+            public void onTick(long millisUntilFinished) {
+            }
 
-        public void onFinish() {
-            layoutContent.setVisibility(View.VISIBLE);
-            layoutIntroScreen.setVisibility(View.GONE);
-        }
-    }.start();
+            public void onFinish() {
+                layoutContent.setVisibility(View.VISIBLE);
+                layoutIntroScreen.setVisibility(View.GONE);
+            }
+        }.start();
 
 
         // Show retry button.
@@ -81,7 +86,7 @@ private void init(){
 
 
             }*/
-        }
+    }
 
     private void initSplashLayout() {
         if (!layoutCreated) {
@@ -89,14 +94,14 @@ private void init(){
 
             layoutContent = findViewById(R.id.splash_content);
             layoutIntroScreen = findViewById(R.id.splash_intro_screen);
-           // layoutContentNoConnection = findViewById(R.id.splash_content_no_connection);
+            // layoutContentNoConnection = findViewById(R.id.splash_content_no_connection);
             layoutContentSelectShop = findViewById(R.id.splash_content_select_shop);
             username = (EditText) findViewById(R.id.rm_username);
             password = (EditText) findViewById(R.id.rm_password);
             login = (Button) findViewById(R.id.rm_btn_login);
-           // Pbar = (ProgressBar)findViewById(R.id.progressBar1);
+            // Pbar = (ProgressBar)findViewById(R.id.progressBar1);
             pref = new PrefManager(this);
-          //  Pbar.setVisibility(View.GONE);
+            //  Pbar.setVisibility(View.GONE);
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -121,20 +126,20 @@ private void init(){
                                     if (res!=null) {
                                         if (!res.equals("")) {
                                             pref.setRMAuthenticateToken(res);
-                                            Intent intent = new Intent(getApplicationContext(), ShowMessagesActivity.class);
+                                            //Intent intent = new Intent(getApplicationContext(), ShowMessagesActivity.class);
                                             pref.setUserVOList("");
-                                            startActivity(intent);
+                                           // startActivity(intent);
                                             //Pbar.setVisibility(View.GONE);
                                         }
                                     }
                                     else{
                                         Toast.makeText(AuthenticateUserActivity.this, "یوزرنیم یا پسورد غلط است", Toast.LENGTH_SHORT).show();
-                                       // Pbar.setVisibility(View.GONE);
+                                        // Pbar.setVisibility(View.GONE);
                                     }
                                 } else {
 
                                     Toast.makeText(AuthenticateUserActivity.this, "not success", Toast.LENGTH_SHORT).show();
-                                   // Pbar.setVisibility(View.GONE);
+                                    // Pbar.setVisibility(View.GONE);
                                 }
                             }
 
@@ -144,7 +149,7 @@ private void init(){
                             }
                         });
                     } else {
-                       // Pbar.setVisibility(View.GONE);
+                        // Pbar.setVisibility(View.GONE);
                         //device id is null
                     }
                 }
@@ -162,7 +167,7 @@ private void init(){
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_authenticate_user, menu);
+       // getMenuInflater().inflate(R.menu.menu_authenticate_user, menu);
         return true;
     }
 
